@@ -118,31 +118,39 @@ const options = {
 зупинятися, коли дійшов до кінцевої дати, тобто залишок часу дорівнює нулю
 `00:00:00:00`.
 
-````**! Після запуску таймера натисканням кнопки Старт кнопка Старт і інпут стають
+**! Після запуску таймера натисканням кнопки Старт кнопка Старт і інпут стають
 неактивним, щоб користувач не міг обрати нову дату, поки йде відлік часу. Після
 зупинки таймера інпут стає активним, щоб користувач міг обрати наступну дату.
-Кнопка залишається не активною.**```
+Кнопка залишається не активною.**
 
 Для підрахунку значень використовуй готову функцію `convertMs`, де `ms` —
 різниця між кінцевою і поточною датою в мілісекундах.
 
-````
+```
 
-function convertMs(ms) { // Number of milliseconds per unit of time const second
-= 1000; const minute = second _ 60; const hour = minute _ 60; const day =
-hour \* 24;
+function convertMs(ms) {
+  // Number of milliseconds per unit of time
+  const second = 1000;
+  const minute = second * 60;
+  const hour = minute * 60;
+  const day = hour * 24;
 
-// Remaining days const days = Math.floor(ms / day); // Remaining hours const
-hours = Math.floor((ms % day) / hour); // Remaining minutes const minutes =
-Math.floor(((ms % day) % hour) / minute); // Remaining seconds const seconds =
-Math.floor((((ms % day) % hour) % minute) / second);
+  // Remaining days
+  const days = Math.floor(ms / day);
+  // Remaining hours
+  const hours = Math.floor((ms % day) / hour);
+  // Remaining minutes
+  const minutes = Math.floor(((ms % day) % hour) / minute);
+  // Remaining seconds
+  const seconds = Math.floor((((ms % day) % hour) % minute) / second);
 
-return { days, hours, minutes, seconds }; }
+  return { days, hours, minutes, seconds };
+}
 
 console.log(convertMs(2000)); // {days: 0, hours: 0, minutes: 0, seconds: 2}
 console.log(convertMs(140000)); // {days: 0, hours: 0, minutes: 2, seconds: 20}
-console.log(convertMs(24140000)); // {days: 0, hours: 6 minutes: 42, seconds:
-20}
+console.log(convertMs(24140000)); // {days: 0, hours: 6 minutes: 42, seconds: 20}
+
 
 ```
 
@@ -164,8 +172,10 @@ console.log(convertMs(24140000)); // {days: 0, hours: 6 minutes: 42, seconds:
 
 ```
 
-// Описаний у документації import iziToast from "izitoast"; // Додатковий імпорт
-стилів import "izitoast/dist/css/iziToast.min.css";
+// Описаний у документації
+import iziToast from "izitoast";
+// Додатковий імпорт стилів
+import "izitoast/dist/css/iziToast.min.css";
 
 ```
 
@@ -216,9 +226,9 @@ console.log(convertMs(24140000)); // {days: 0, hours: 6 minutes: 42, seconds:
     </label>
   </fieldset>
 
-<button type="submit">Create notification</button>
-
+  <button type="submit">Create notification</button>
 </form>
+
 
 ```
 
@@ -247,6 +257,7 @@ resolve/reject, має бути значення затримки в міліс�
 
 `❌ Rejected promise in ${delay}ms`
 
+
 ```
 
 ## Бібліотека повідомлень
@@ -258,8 +269,11 @@ resolve/reject, має бути значення затримки в міліс�
 
 ```
 
-// Описаний у документації import iziToast from "izitoast"; // Додатковий імпорт
-стилів import "izitoast/dist/css/iziToast.min.css";
+// Описаний у документації
+import iziToast from "izitoast";
+// Додатковий імпорт стилів
+import "izitoast/dist/css/iziToast.min.css";
+
 
 ```
 
@@ -271,4 +285,3 @@ resolve/reject, має бути значення затримки в міліс�
   кількість мілісекунд, переданих в інпут.
 - Повідомлення, що виводиться, містить тип обраного стейту і кількість
   мілісекунд згідно з шаблоном в умові.
-```
